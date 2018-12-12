@@ -34,7 +34,7 @@
                                     <color key="titleColor" red="0.63459442720769366" green="0.95162561440521132" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fdY-Bg-o2l" kind="show" id="rKs-OW-eh0"/>
+                                    <segue destination="fdY-Bg-o2l" kind="show" identifier="leaderboardSegue2" id="rKs-OW-eh0"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="putin1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qCG-c2-oDj">
@@ -278,13 +278,14 @@
                         <outlet property="scoreLabel" destination="S4N-D3-LJX" id="b90-IX-8IZ"/>
                         <outlet property="scoreNumber" destination="jeK-fx-3Ly" id="pZb-tj-8hR"/>
                         <outlet property="submit" destination="GyC-SQ-acZ" id="YNc-D2-dun"/>
+                        <segue destination="fdY-Bg-o2l" kind="show" identifier="leaderboardSegue" id="gAj-TM-mb7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeh-Et-OsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3116" y="147.97601199400302"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Vlady's Leaderboard-->
         <scene sceneID="2at-ny-ohb">
             <objects>
                 <tableViewController id="47h-eS-58B" customClass="LeaderboardVC" customModule="Trivia" customModuleProvider="target" sceneMemberID="viewController">
@@ -293,12 +294,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jSg-zR-V8X">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="leaderboardCell" textLabel="MPJ-GR-UiI" detailTextLabel="Wm9-dj-YdU" style="IBUITableViewCellStyleValue1" id="jSg-zR-V8X">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jSg-zR-V8X" id="uek-9M-Afz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MPJ-GR-UiI">
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wm9-dj-YdU">
+                                            <rect key="frame" x="315" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.99483889250000002" green="0.45807192107372191" blue="0.38483694296865339" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
@@ -308,7 +325,7 @@
                             <outlet property="delegate" destination="47h-eS-58B" id="9ku-Tl-Ciq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="c19-Ja-BMY">
+                    <navigationItem key="navigationItem" title="Vlady's Leaderboard" id="c19-Ja-BMY">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="NDC-5f-fCr">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="popoverPresentation" popoverAnchorBarButtonItem="NDC-5f-fCr" id="rtz-Dt-7au">
@@ -349,4 +366,7 @@
         <image name="putin3.jpg" width="500" height="375"/>
         <image name="putin4.jpg" width="513" height="700"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rKs-OW-eh0"/>
+    </inferredMetricsTieBreakers>
 </document>

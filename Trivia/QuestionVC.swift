@@ -32,22 +32,31 @@ class QuestionVC: UIViewController
     var questionNr = 0
     var name: String?
     let fetchquestion = fetch()
-    var results: [[String:Any]]?
+    var scores: [[String:Any]]?
+    var stopped = 0
     
     @IBAction func submitPressed(_ sender: Any)
     {
-        print(score)
         name = nameBar.text
-        DispatchQueue.main.async()
-        {
-            self.fetchquestion.submitResults(name: self.name, score: self.score)
-//            self.fetchquestion.fetchResult{ (test) in
-//                if let test = test
-//                {
-//                    self.results = test
-//                }
-//            }
+        self.fetchquestion.submitResults(name: self.name, score: self.score)
+        sleep(1)
+        self.fetchquestion.fetchResult{ (test) in
+            if let test = test
+            {
+                self.scores = test
+                print(self.scores)
+            }
         }
+        while self.stopped == 0
+        {
+            if self.scores != nil
+            {
+                self.stopped = 1
+                performSegue(withIdentifier: "leaderboardSegue", sender: submit)
+                break;
+            }
+        }
+        
     }
     
     override func viewDidLoad()
@@ -61,6 +70,15 @@ class QuestionVC: UIViewController
             self.finalMessage.isHidden = true
             self.nameBar.isHidden = true
             self.kim.isHidden = true
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "leaderboardSegue" {
+            let leaderboardNC = segue.destination as! UINavigationController
+            let leaderboardVC = leaderboardNC.topViewController as! LeaderboardVC
+            leaderboardVC.scores = self.scores
         }
     }
 

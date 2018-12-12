@@ -17,9 +17,9 @@ class fetch
         { (data, response, error) in
             let jsonDecoder = JSONDecoder()
             if let data = data,
-                let questions2 = try? jsonDecoder.decode(ResultStruct.self, from: data)
+                let questions1 = try? jsonDecoder.decode(ResultStruct.self, from: data)
             {
-                completion(questions2.results)
+                completion(questions1.results)
             }
             else
             {
@@ -32,13 +32,16 @@ class fetch
     
     func fetchResult(completion: @escaping ([[String:Any]]?) -> Void)
     {
-        let url = URL(string: "https://ide50-brianvdvelde.cs50.io:8080/results")!
-        let task = URLSession.shared.dataTask(with: url)
+        let returnURL = URL(string: "https://ide50-brianvdvelde.cs50.io:8080/results")!
+        let task = URLSession.shared.dataTask(with: returnURL)
         { (data, response, error) in
             if let data = data,
-                let test = try? JSONSerialization.jsonObject(with: data) as? [[String:Any]] {
-                completion(test)
-            } else {
+                let question2 = try? JSONSerialization.jsonObject(with: data) as? [[String:Any]]
+            {
+                completion(question2)
+            }
+            else
+            {
                 completion(nil)
             }
         }

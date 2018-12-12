@@ -17,6 +17,7 @@ class ViewController: UIViewController
     
     var a: [QuestionStruct]?
     var fetchdata = fetch()
+    var scores: [[String:Any]]?
     
     override func viewDidLoad()
     {
@@ -29,6 +30,13 @@ class ViewController: UIViewController
                 print(self.a)
             }
         }
+        self.fetchdata.fetchResult{ (test) in
+            if let test = test
+            {
+                self.scores = test
+                print(self.scores)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -37,6 +45,12 @@ class ViewController: UIViewController
         {
             let questionVC = segue.destination as! QuestionVC
             questionVC.question = self.a
+        }
+        else if segue.identifier == "leaderboardSegue2"
+        {
+            let leaderboardNC = segue.destination as! UINavigationController
+            let leaderboardVC = leaderboardNC.topViewController as! LeaderboardVC
+            leaderboardVC.scores = self.scores
         }
     }
 
