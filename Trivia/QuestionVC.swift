@@ -11,6 +11,7 @@ import HTMLString
 
 class QuestionVC: UIViewController
 {
+    // defines outlets
     @IBOutlet weak var kim: UIImageView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionNumber: UILabel!
@@ -28,6 +29,7 @@ class QuestionVC: UIViewController
     @IBOutlet weak var nameBar: UITextField!
     @IBOutlet weak var progressBar: UIProgressView!
     
+    // defines variables
     var progressIndex = 0
     var j = 0
     var answer = [String]()
@@ -39,6 +41,8 @@ class QuestionVC: UIViewController
     var scores: [[String:Any]]?
     var stopped = 0
     
+    // when submit button is pressed send info to server and retrieve updated leaderboard
+    // performs segue to leaderboard
     @IBAction func submitPressed(_ sender: Any)
     {
         name = nameBar.text
@@ -63,6 +67,7 @@ class QuestionVC: UIViewController
         
     }
     
+    // loads initial screen and while not all questions are answered the submit options are not visible
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -77,6 +82,7 @@ class QuestionVC: UIViewController
         }
     }
     
+    // sends needed info about scores to leaderboard view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "leaderboardSegue" {
@@ -86,6 +92,8 @@ class QuestionVC: UIViewController
         }
     }
 
+    // if answer button pressed is the same as correct answer perform scorewin and done func
+    // and add a +1 to the progress bar
     @IBAction func answerPressed1(_ sender: Any)
     {
         if A.title(for: .normal) == question![j].correct_answer
@@ -102,6 +110,8 @@ class QuestionVC: UIViewController
         Done()
     }
     
+    // if answer button pressed is the same as correct answer perform scorewin and done func
+    // and add a +1 to the progress bar
     @IBAction func answerPressed2(_ sender: Any)
     {
         if B.title(for: .normal) == question![j].correct_answer
@@ -118,6 +128,8 @@ class QuestionVC: UIViewController
         Done()
     }
     
+    // if answer button pressed is the same as correct answer perform scorewin and done func
+    // and add a +1 to the progress bar
     @IBAction func answerPressed3(_ sender: Any)
     {
         if C.title(for: .normal) == question![j].correct_answer
@@ -134,6 +146,8 @@ class QuestionVC: UIViewController
         Done()
     }
     
+    // if answer button pressed is the same as correct answer perform scorewin and done func
+    // and add a +1 to the progress bar
     @IBAction func answerPressed4(_ sender: Any)
     {
         if D.title(for: .normal) == question![j].correct_answer
@@ -150,6 +164,8 @@ class QuestionVC: UIViewController
         Done()
     }
     
+    // func thats called when last questions is answered
+    // shows textfield aswell as the submit button
     func end()
     {
         scoreNumber.text = "\(score)"
@@ -169,6 +185,8 @@ class QuestionVC: UIViewController
         self.D.isHidden = true
     }
     
+    // if button pressed is incorrect this func is called that shows a loss message
+    // and subtracts points from your score
     func ScoreLose()
     {
         showAlertLose()
@@ -203,6 +221,8 @@ class QuestionVC: UIViewController
         }
     }
     
+    // func that is performed when correct button is clicked
+    // adds points to score and shows win message
     func ScoreWin()
     {
         switch question![j].difficulty.removingHTMLEntities
@@ -220,6 +240,8 @@ class QuestionVC: UIViewController
         showAlertWin()
     }
     
+    // func that is called when questions is answered so a new one can be shown
+    // while there are questions left
     func Done()
     {
         answer.removeAll()
@@ -235,6 +257,11 @@ class QuestionVC: UIViewController
         }
     }
     
+    // func is called while there are still questions left
+    // updates score view
+    // updates question number view
+    // updates progress bar
+    // retrieves and put options of questions in all 4 buttons
     func Options()
     {
         scoreNumber.text = "\(score)"
@@ -261,6 +288,7 @@ class QuestionVC: UIViewController
         self.D.setTitle(answer[3], for: .normal)
     }
     
+    // alert that is shown when correct answer is given to question
     func showAlertWin()
     {
         let alert = UIAlertController(title: "YEAH", message: "Correct!!", preferredStyle: .alert)
@@ -273,6 +301,7 @@ class QuestionVC: UIViewController
         Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
     
+    // alert that is shown when incorrect answer is given to question
     func showAlertLose()
     {
         let alert = UIAlertController(title: "BOOH", message: "Incorrect!!", preferredStyle: .alert)

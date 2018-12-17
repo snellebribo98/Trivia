@@ -10,10 +10,13 @@ import UIKit
 
 class LeaderboardVC: UITableViewController
 {
+    // defines variables
     var scores: [[String:Any]]?
     
+    // defines outlets
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
+    // sets initial view
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -24,6 +27,7 @@ class LeaderboardVC: UITableViewController
         return 1
     }
 
+    // amount of rows is equel to amount of scores
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return self.scores!.count
@@ -34,7 +38,8 @@ class LeaderboardVC: UITableViewController
         configure(cell, forItemAt: indexPath)
         return cell
     }
-    //
+    
+    // puts the name and score of a player in the table view
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let item = self.scores![indexPath.row]
         cell.textLabel?.text = item["name"] as? String

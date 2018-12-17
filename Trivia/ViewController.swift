@@ -11,17 +11,20 @@ import HTMLString
 
 class ViewController: UIViewController
 {
-
+    // define outlets
     @IBOutlet weak var startGame: UIButton!
     @IBOutlet weak var leaderboard: UIButton!
     @IBOutlet weak var rules: UIButton!
     
+    // define variables
     var question: [QuestionStruct]?
     var fetchdata = fetch()
     var scores: [[String:Any]]?
     
+    // action that leads to this view controller and unwinds
     @IBAction func unwindToStart(segue:UIStoryboardSegue) { }
     
+    // loads questions and scores
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -40,6 +43,9 @@ class ViewController: UIViewController
         }
     }
     
+    // sends neccesary info to next view controller
+    // either the question view controller with loaded questions
+    // or scores to view controller with leaderboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "questionSegue"

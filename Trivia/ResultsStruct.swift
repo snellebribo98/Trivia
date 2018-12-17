@@ -8,6 +8,7 @@
 
 import UIKit
 
+// struct from leaderboard
 struct Score: Codable
 {
     var id: Int
@@ -15,6 +16,7 @@ struct Score: Codable
     var score: String
 }
 
+// scores struct
 struct Scores: Codable
 {
     let scores: [Score]

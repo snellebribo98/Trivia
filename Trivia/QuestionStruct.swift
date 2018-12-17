@@ -8,6 +8,7 @@
 
 import UIKit
 
+// questions struct from api
 struct QuestionStruct: Codable
 {
     var category: String
@@ -18,6 +19,7 @@ struct QuestionStruct: Codable
     var incorrect_answers: [String]
 }
 
+// result struct from api
 struct ResultStruct: Codable
 {
     let results: [QuestionStruct]

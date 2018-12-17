@@ -10,6 +10,7 @@ import UIKit
 
 class fetch
 {
+    // func that retrieves questions from api
     func fetchQuestion(completion: @escaping ([QuestionStruct]?) -> Void)
     {
         let baseURL = URL(string: "https://opentdb.com/api.php?amount=10&type=multiple")!
@@ -30,6 +31,7 @@ class fetch
         task.resume()
     }
     
+    // func that retrieves result from server
     func fetchResult(completion: @escaping ([[String:Any]]?) -> Void)
     {
         let returnURL = URL(string: "https://ide50-brianvdvelde.cs50.io:8080/results")!
@@ -48,6 +50,7 @@ class fetch
         task.resume()
     }
     
+    // func that sends score and name to server
     func submitResults(name: String?, score: Int?)
     {
         let url = URL(string: "https://ide50-brianvdvelde.cs50.io:8080/results")!
