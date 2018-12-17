@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20BE0638993F620035DC8BC8 /* Pods_Trivia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FC66E459E6D1672486B424F /* Pods_Trivia.framework */; };
+		F3C5ED0821C7B844003575F0 /* RulesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5ED0721C7B844003575F0 /* RulesVC.swift */; };
 		F3C710FC21BE59E400D2AC28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C710FB21BE59E400D2AC28 /* AppDelegate.swift */; };
 		F3C710FE21BE59E400D2AC28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C710FD21BE59E400D2AC28 /* ViewController.swift */; };
 		F3C7110121BE59E400D2AC28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C710FF21BE59E400D2AC28 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		084F3958192344459BD25E8E /* Pods-Trivia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia/Pods-Trivia.debug.xcconfig"; sourceTree = "<group>"; };
 		1FC66E459E6D1672486B424F /* Pods_Trivia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73E2258BE17D3013965A59C2 /* Pods-Trivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia/Pods-Trivia.release.xcconfig"; sourceTree = "<group>"; };
+		F3C5ED0721C7B844003575F0 /* RulesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesVC.swift; sourceTree = "<group>"; };
 		F3C710F821BE59E400D2AC28 /* Trivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C710FB21BE59E400D2AC28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3C710FD21BE59E400D2AC28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				F3C710FD21BE59E400D2AC28 /* ViewController.swift */,
 				F3C7110D21BE665900D2AC28 /* QuestionVC.swift */,
 				F3C7111B21BE89DA00D2AC28 /* LeaderboardVC.swift */,
+				F3C5ED0721C7B844003575F0 /* RulesVC.swift */,
 				F3C7111921BE88D300D2AC28 /* QuestionStruct.swift */,
 				F3C7111F21C012D200D2AC28 /* ResultsStruct.swift */,
 				F3C7112121C0FE7F00D2AC28 /* Fetch.swift */,
@@ -247,6 +250,7 @@
 				F3C710FE21BE59E400D2AC28 /* ViewController.swift in Sources */,
 				F3C7110E21BE665900D2AC28 /* QuestionVC.swift in Sources */,
 				F3C7112221C0FE8000D2AC28 /* Fetch.swift in Sources */,
+				F3C5ED0821C7B844003575F0 /* RulesVC.swift in Sources */,
 				F3C7112021C012D200D2AC28 /* ResultsStruct.swift in Sources */,
 				F3C710FC21BE59E400D2AC28 /* AppDelegate.swift in Sources */,
 				F3C7111C21BE89DA00D2AC28 /* LeaderboardVC.swift in Sources */,

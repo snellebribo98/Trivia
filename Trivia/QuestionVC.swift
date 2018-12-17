@@ -14,6 +14,8 @@ class QuestionVC: UIViewController
     @IBOutlet weak var kim: UIImageView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionNumber: UILabel!
+    @IBOutlet weak var questionDifficulty: UILabel!
+    @IBOutlet weak var difficultyLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var scoreNumber: UILabel!
     @IBOutlet weak var questionDescription: UILabel!
@@ -24,7 +26,9 @@ class QuestionVC: UIViewController
     @IBOutlet weak var submit: UIButton!
     @IBOutlet weak var finalMessage: UILabel!
     @IBOutlet weak var nameBar: UITextField!
+    @IBOutlet weak var progressBar: UIProgressView!
     
+    var progressIndex = 0
     var j = 0
     var answer = [String]()
     var question: [QuestionStruct]?
@@ -87,10 +91,12 @@ class QuestionVC: UIViewController
         if A.title(for: .normal) == question![j].correct_answer
         {
             ScoreWin()
+            progressIndex += 1
         }
         else
         {
             ScoreLose()
+            progressIndex += 1
         }
         
         Done()
@@ -101,10 +107,12 @@ class QuestionVC: UIViewController
         if B.title(for: .normal) == question![j].correct_answer
         {
             ScoreWin()
+            progressIndex += 1
         }
         else
         {
             ScoreLose()
+            progressIndex += 1
         }
         
         Done()
@@ -115,10 +123,12 @@ class QuestionVC: UIViewController
         if C.title(for: .normal) == question![j].correct_answer
         {
             ScoreWin()
+            progressIndex += 1
         }
         else
         {
             ScoreLose()
+            progressIndex += 1
         }
         
         Done()
@@ -129,10 +139,12 @@ class QuestionVC: UIViewController
         if D.title(for: .normal) == question![j].correct_answer
         {
             ScoreWin()
+            progressIndex += 1
         }
         else
         {
             ScoreLose()
+            progressIndex += 1
         }
         
         Done()
@@ -147,7 +159,10 @@ class QuestionVC: UIViewController
         self.nameBar.isHidden = false
         self.submit.isHidden = false
         self.finalMessage.isHidden = false
+        self.questionDifficulty.isHidden = true
+        self.difficultyLabel.isHidden = true
         self.questionDescription.isHidden = true
+        self.progressBar.isHidden = true
         self.A.isHidden = true
         self.B.isHidden = true
         self.C.isHidden = true
@@ -158,19 +173,50 @@ class QuestionVC: UIViewController
     {
         showAlertLose()
         
-        if score >= 1
+        switch question![j].difficulty.removingHTMLEntities
         {
-            score -= 1
-        }
-        else
-        {
-            score == score
+        case "easy":
+            if score >= 5
+            {
+                score -= 5
+            }
+            else
+            {
+                score -= score
+            }
+        case "medium":
+            if score >= 3
+            {
+                score -= 3
+            }
+            else
+            {
+                score -= score
+            }
+        case "hard":
+            if score >= 1
+            {
+                score -= 1
+            }
+        default:
+            print("wow")
         }
     }
     
     func ScoreWin()
     {
-        score += 5
+        switch question![j].difficulty.removingHTMLEntities
+        {
+        case "easy":
+            score += 1
+        case "medium":
+            score += 5
+        case "hard":
+            score += 10
+        default:
+            print("wow")
+        }
+        
         showAlertWin()
     }
     
@@ -196,6 +242,9 @@ class QuestionVC: UIViewController
         questionNr = j + 1
         questionNumber.text = "\(questionNr)"
         
+        let totalProgress = Float(progressIndex) / Float(question!.count)
+        progressBar.setProgress(totalProgress, animated: true)
+        
         answer.append(question![j].correct_answer.removingHTMLEntities)
         
         for i in question![j].incorrect_answers
@@ -205,6 +254,7 @@ class QuestionVC: UIViewController
         
         answer.shuffle()
         self.questionDescription.text = question![j].question.removingHTMLEntities
+        self.questionDifficulty.text = question![j].difficulty.removingHTMLEntities
         self.A.setTitle(answer[0], for: .normal)
         self.B.setTitle(answer[1], for: .normal)
         self.C.setTitle(answer[2], for: .normal)
